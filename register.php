@@ -30,7 +30,7 @@ if ($_POST) {
 	if (count($errors) < 1) {
 		if (!isThereUser($db_connection, $username)) {
 			$querry = 'INSERT INTO `users` (`user_id`, `user_name`, `user_pwd`, `user_first_name`, `user_surname`, `user_photo`, `user_contacts`) 
-			VALUES (NULL, "' . $username . '", "' . $pass . '", "' . $fname . '", "' . $surename . '", ' . '""' . ', 0);';
+			VALUES (NULL, "' .mysqli_real_escape_string($db_connection, $username) . '", "' . mysqli_real_escape_string($db_connection,$pass) . '", "' . mysqli_real_escape_string($db_connection, $fname) . '", "' . mysqli_real_escape_string($db_connection, $surename) . '", ' . '""' . ', 0);';
 			mysqli_query($db_connection, $querry);
 			if (strlen((mysqli_error($db_connection))) == 0) {
 				echo "Registration succeeded!";

@@ -1,0 +1,39 @@
+a {
+	color: #000;
+	text-decoration:none;
+}
+
+h5, h6{
+	font-weight: normal;
+}
+a:hover{
+	text-decoration:underline;
+	color: #fff;
+}
+
+body {
+	text-align: center;
+	background-color: #66CCFF;
+}
+body h1 {
+	background-color: #6699FF;
+	font-weight: normal;
+}
+
+
+#container {
+	margin-left: auto;
+	margin-right: auto;
+	display: inline-block;
+}
+
+.registering{
+	border: 3px double #6699FF;
+    padding: 20px;
+	
+}
+
+form input {
+	display: block;
+	margin: 10px 0px 10px 0;
+}

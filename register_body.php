@@ -1,4 +1,3 @@
-<a href="index.php">Main</a>
 <section class="registering">
 	<form method="POST" action="register.php">
 		<input type="text" name="user_name" placeholder="UserName" required="required" autocomplete="on"/>

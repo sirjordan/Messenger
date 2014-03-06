@@ -1,2 +1,2 @@
-<a href="register.php">Register</a>
-<a href="login.php">Log In</a>
+<div><strong></strong></div>
+<a href="logout.php">LogOut</a>
