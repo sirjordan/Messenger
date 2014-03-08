@@ -12,4 +12,24 @@ function isThereUser($link, $name) {
 	}
 
 }
+
+function getUserContacts($link, $user) {
+	$q = 'SELECT * FROM `contacts` WHERE `user_name` = "' . $user . '" ';
+	$contacts = mysqli_query($link, $q);
+	$result = array();
+	if (strlen((mysqli_error($link))) == 0) {
+		while ($row = mysqli_fetch_assoc($contacts)) {
+			$result[] = $row;
+		}
+		return $result;
+	} else {
+		return null;
+	}
+}
+
+function logUser($link, $user, $isLogged) {	
+	$q = 'UPDATE `messenger`.`users` SET `is_logged` = '.(int)$isLogged.' WHERE `users`.`user_name` = "' . mysqli_real_escape_string($link, $user) . ' "';
+	mysqli_query($link, $q);
+}
 ?>
+

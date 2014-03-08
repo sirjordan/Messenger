@@ -3,6 +3,16 @@ a {
 	text-decoration:none;
 }
 
+ul{
+	text-align:left;
+	padding:0;
+	margin:0;
+}
+
+li{
+	list-style:none;
+}
+
 h5, h6{
 	font-weight: normal;
 }
@@ -20,6 +30,8 @@ body h1 {
 	font-weight: normal;
 }
 
+.navigation{
+}
 
 #container {
 	margin-left: auto;
@@ -27,13 +39,29 @@ body h1 {
 	display: inline-block;
 }
 
-.registering{
+.rect{
 	border: 3px double #6699FF;
     padding: 20px;
-	
+    display: inline-block;
+}
+
+.multi {
+	min-height:200px;
+	float:left;
+	margin:0 5px;
 }
 
 form input {
 	display: block;
 	margin: 10px 0px 10px 0;
 }
+
+.inviteForm input{
+	display:inline-block;
+}
+
+.greetings{
+	color:green;
+}
+
+

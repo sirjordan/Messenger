@@ -1,10 +1,10 @@
 <?php
 $pageTitle = 'Register';
 $h1 = "Register new user";
-require 'header.php';
+require_once 'header.php';
 require 'register_body.php';
 require 'footer.php';
-require 'functions.php';
+//require 'functions.php';
 
 if ($_POST) {
 	$username = trim($_POST['user_name']);
@@ -13,7 +13,6 @@ if ($_POST) {
 	$surename = trim($_POST['user_surname']);
 	$errors = array();
 	// TODO: Call javaScript function to display the messages!
-	// TODO: Set HASH for password
 	if (mb_strlen($username) < 6) {
 		$errors[] = 'User name has to be at least 6 symbols.';
 	}
@@ -30,7 +29,7 @@ if ($_POST) {
 	if (count($errors) < 1) {
 		if (!isThereUser($db_connection, $username)) {
 			$querry = 'INSERT INTO `users` (`user_id`, `user_name`, `user_pwd`, `user_first_name`, `user_surname`, `user_photo`, `user_contacts`) 
-			VALUES (NULL, "' .mysqli_real_escape_string($db_connection, $username) . '", "' . mysqli_real_escape_string($db_connection,$pass) . '", "' . mysqli_real_escape_string($db_connection, $fname) . '", "' . mysqli_real_escape_string($db_connection, $surename) . '", ' . '""' . ', 0);';
+			VALUES (NULL, "' .mysqli_real_escape_string($db_connection, $username) . '", "' .sha1($pass.$username) . '", "' . mysqli_real_escape_string($db_connection, $fname) . '", "' . mysqli_real_escape_string($db_connection, $surename) . '", ' . '""' . ', 0);';
 			mysqli_query($db_connection, $querry);
 			if (strlen((mysqli_error($db_connection))) == 0) {
 				echo "Registration succeeded!";
