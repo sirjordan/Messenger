@@ -24,9 +24,28 @@ if (isset($_POST['invite'])) {
 	echo '<div><span class="greetings">Invitation has sended!</span></div>';
 }
 
-if (showInvitations($db_connection, $_SESSION['user']) != false) {	
+if (showInvitations($db_connection, $_SESSION['user']) != false) {
 	include 'newInvitations.php';
+}
+
+if (isset($_POST['submitInvitations'])) {
+	if (!empty($_POST['accepted'])) {
+		foreach ($_POST['accepted'] as $check) {
+			if ($check != null) {
+				if(setContact($db_connection, $_SESSION['user'], $check)){
+					echo 'User <span class="greetings">'.$check. '</span> added to your contacts!';
+					header('Location: contacts.php');
+					exit;
+				}
+			}
+		}
+	}
 }
 
 require 'contacts_body.php';
 require 'footer.php';
+
+
+
+
+
